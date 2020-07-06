@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   loading: false,
   error: false,
   posts: [],
+  selectedPost: null,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +28,12 @@ const reducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         posts: action.payload,
+      };
+
+    case actionTypes.SELECT_POST:
+      return {
+        ...state,
+        selectedPost: action.payload,
       };
 
     default:

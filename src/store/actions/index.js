@@ -1,1 +1,1 @@
-export { fetchPosts } from "./posts";
+export { fetchPosts, selectPost } from "./posts";

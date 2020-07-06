@@ -33,3 +33,11 @@ export const fetchPostsFail = () => {
     type: actionTypes.FETCH_POSTS_FAIL,
   };
 };
+
+export const selectPost = (postId, postsData) => {
+  const selectedPostData = postsData.filter((post) => post.id === postId)[0];
+  return {
+    type: actionTypes.SELECT_POST,
+    payload: selectedPostData,
+  };
+};

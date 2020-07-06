@@ -20,7 +20,16 @@ class Home extends Component {
     const posts = this.props.posts.map(({ title, body, id, userId }) => {
       return (
         <div key={id} className={classes.PostContainer}>
-          <Post title={title} userId={userId} body={body} />
+          <Post
+            title={title}
+            userId={userId}
+            body={body}
+            goToDetails={() => {
+              this.props.goToDetails(id, this.props.posts);
+              this.props.history.push("/details");
+            }}
+            showDetailsButton
+          />
         </div>
       );
     });
@@ -40,6 +49,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: () => dispatch(actions.fetchPosts()),
+    goToDetails: (id, posts) => dispatch(actions.selectPost(id, posts)),
   };
 };
 
